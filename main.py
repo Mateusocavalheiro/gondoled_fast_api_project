@@ -1,6 +1,6 @@
 from fastapi import FastAPI
-from . import models, database
-from .routers import esp32
+import models, database
+from routers import esp32
 
 # Cria as tabelas no banco de dados automaticamente
 models.Base.metadata.create_all(bind=database.engine)

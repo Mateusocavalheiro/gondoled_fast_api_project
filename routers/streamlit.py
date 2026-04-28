@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-from .. import models, schemas, database
+import models, schemas, database
 from datetime import datetime
 
 router = APIRouter(prefix="/admin", tags=["Admin Streamlit"])
