@@ -2,12 +2,15 @@ from fastapi import APIRouter, Depends, HTTPException, Security, status
 from fastapi.security.api_key import APIKeyHeader
 from sqlalchemy.orm import Session
 from datetime import datetime # <- Importação necessária para o relógio
-import models, schemas, database
+import models, schemas, database, os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 router = APIRouter(prefix="/esp32", tags=["ESP32"])
 
 # --- CONFIGURAÇÃO DA API KEY ---
-CHAVE_SECRETA = "senha_2026!"
+CHAVE_SECRETA = os.getenv("API_KEY_ESP32", "senha_fallback")
 NOME_DO_CABECALHO = "X-API-Key"
 
 api_key_header = APIKeyHeader(name=NOME_DO_CABECALHO, auto_error=False)
